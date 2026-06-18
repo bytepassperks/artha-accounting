@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Artha\Http\Controllers\ArthaApiController;
+use App\Artha\Http\Controllers\ArthaWriteController;
 use App\Artha\Http\Middleware\VerifyArthaToken;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +21,9 @@ Route::prefix('api/artha')
         Route::get('customers', [ArthaApiController::class, 'customers']);
         Route::get('invoices', [ArthaApiController::class, 'invoices']);
         Route::get('summary', [ArthaApiController::class, 'summary']);
+
+        // Cross-module writes: event flows (CRM Opportunity Won) create real
+        // accounting records here — a customer and a draft invoice.
+        Route::post('customers', [ArthaWriteController::class, 'createCustomer']);
+        Route::post('invoices', [ArthaWriteController::class, 'createInvoice']);
     });
