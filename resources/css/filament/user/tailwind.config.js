@@ -5,6 +5,7 @@ export default {
     content: [
         './app/Filament/User/**/*.php',
         './resources/views/filament/user/**/*.blade.php',
+        './resources/views/artha/**/*.blade.php',
         './resources/views/components/**/*.blade.php',
         './vendor/filament/**/*.blade.php',
         './vendor/andrewdwallo/filament-companies/resources/views/**/*.blade.php',

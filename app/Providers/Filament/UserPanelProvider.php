@@ -14,6 +14,8 @@ use Filament\Navigation\NavigationItem;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\View\PanelsRenderHook;
+use Illuminate\Contracts\View\View;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -67,6 +69,10 @@ class UserPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/user/theme.css')
             ->brandLogo(static fn () => view('components.icons.logo'))
             ->favicon(asset('favicon.svg'))
+            ->renderHook(
+                PanelsRenderHook::TOPBAR_END,
+                static fn (): View => view('artha.app-launcher'),
+            )
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')
             ->discoverClusters(in: app_path('Filament/User/Clusters'), for: 'App\\Filament\\User\\Clusters')
