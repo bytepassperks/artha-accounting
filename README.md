@@ -1,4 +1,4 @@
-# ERPSAAS
+# Artha Accounting
 
 <a href="https://trendshift.io/repositories/4749" target="_blank"><img src="https://trendshift.io/api/badge/repositories/4749" alt="andrewdwallo%2Ferpsaas | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
@@ -14,7 +14,7 @@
 
 
 
-A Laravel and Filament-powered accounting platform featuring full double-entry accrual accounting, delivering modern automation for professional financial management.
+Artha Accounting — a Laravel and Filament-powered double-entry accounting platform featuring full double-entry accrual accounting, delivering modern automation for professional financial management.
 
 ## Sponsorship
 

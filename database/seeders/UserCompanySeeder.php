@@ -19,7 +19,7 @@ class UserCompanySeeder extends Seeder
             ->withPersonalCompany(function (CompanyFactory $factory) {
                 return $factory
                     ->state([
-                        'name' => 'ERPSAAS',
+                        'name' => 'Artha',
                     ])
                     ->withTransactions(250)
                     ->withOfferings()
@@ -32,7 +32,7 @@ class UserCompanySeeder extends Seeder
             })
             ->create([
                 'name' => 'Admin',
-                'email' => 'admin@erpsaas.com',
+                'email' => 'admin@arthize.com',
                 'password' => bcrypt('password'),
                 'current_company_id' => 1,  // Assuming this will be the ID of the created company
             ]);

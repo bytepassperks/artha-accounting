@@ -177,6 +177,7 @@ class CompanyPanelProvider extends PanelProvider
             ->databaseNotifications(isLazy: false)
             ->viteTheme('resources/css/filament/company/theme.css')
             ->brandLogo(static fn () => view('components.icons.logo'))
+            ->favicon(asset('favicon.svg'))
             ->tenant(Company::class)
             ->tenantProfile(ManageCompany::class)
             ->tenantRegistration(CreateCompany::class)

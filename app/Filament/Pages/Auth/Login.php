@@ -12,7 +12,7 @@ class Login extends BaseLogin
 
         if (is_demo_environment()) {
             $this->form->fill([
-                'email' => 'admin@erpsaas.com',
+                'email' => 'admin@arthize.com',
                 'password' => 'password',
                 'remember' => true,
             ]);

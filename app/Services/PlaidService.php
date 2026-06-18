@@ -187,7 +187,7 @@ class PlaidService
         $plaidCountry = $this->getCountry($country);
 
         return $this->createLinkToken(
-            'ERPSAAS',
+            'Artha',
             $plaidLanguage,
             [$plaidCountry],
             $user,
