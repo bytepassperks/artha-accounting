@@ -35,7 +35,7 @@ class ArthaApiController
         $clients = Client::query()
             ->withoutGlobalScope(CurrentCompanyScope::class)
             ->where('clients.company_id', $company->id)
-            ->with('primaryContact')
+            ->with(['primaryContact' => fn ($query) => $query->withoutGlobalScope(CurrentCompanyScope::class)])
             ->orderBy('name')
             ->limit($this->limit($request))
             ->get();
@@ -66,7 +66,7 @@ class ArthaApiController
         $query = Invoice::query()
             ->withoutGlobalScope(CurrentCompanyScope::class)
             ->where('invoices.company_id', $company->id)
-            ->with('client')
+            ->with(['client' => fn ($query) => $query->withoutGlobalScope(CurrentCompanyScope::class)])
             ->orderByDesc('date');
 
         if ($request->boolean('unpaid')) {
