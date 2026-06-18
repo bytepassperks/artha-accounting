@@ -18,6 +18,13 @@ return [
     // Which tile represents THIS deployment (highlighted + marked "current").
     'current' => env('ARTHA_APP_KEY', 'accounting'),
 
+    /*
+    | Shared service-to-service token. Other Artha modules (CRM "Ask Artha",
+    | the Automations engine) authenticate to this app's read-only REST API
+    | with this bearer token. Empty token => the API is disabled (404).
+    */
+    'api_token' => env('ARTHA_API_TOKEN', ''),
+
     'apps' => [
         [
             'key' => 'crm',
