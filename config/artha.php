@@ -25,6 +25,27 @@ return [
     */
     'api_token' => env('ARTHA_API_TOKEN', ''),
 
+    /*
+    | Single sign-on. The Artha CRM is the suite's identity provider; it mints a
+    | short-lived HMAC token (this shared secret) and hands off to the callback
+    | below, which logs the matching user in here — no second password prompt.
+    | Off by default and a no-op until ARTHA_SSO_SECRET is set, so deploying the
+    | code never changes the existing password / Socialite login behaviour.
+    */
+    'sso' => [
+        'enabled' => (bool) env('ARTHA_SSO_ENABLED', false),
+        'secret' => env('ARTHA_SSO_SECRET', ''),
+        'ttl' => (int) env('ARTHA_SSO_TTL', 120),
+
+        // CRM identity-provider hand-off URL backing the "Continue with Artha"
+        // button on the login page. Sends the user to the CRM, which mints a
+        // token and bounces back to this app's /artha/sso/callback.
+        'crm_launch_url' => env(
+            'ARTHA_SSO_CRM_LAUNCH_URL',
+            'https://arthize.com/artha/launch/accounting',
+        ),
+    ],
+
     'apps' => [
         [
             'key' => 'crm',

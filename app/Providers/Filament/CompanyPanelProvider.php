@@ -184,6 +184,10 @@ class CompanyPanelProvider extends PanelProvider
                 PanelsRenderHook::TOPBAR_END,
                 static fn (): View => view('artha.app-launcher'),
             )
+            ->renderHook(
+                PanelsRenderHook::AUTH_LOGIN_FORM_AFTER,
+                static fn (): View => view('artha.sso-login-button'),
+            )
             ->tenant(Company::class)
             ->tenantProfile(ManageCompany::class)
             ->tenantRegistration(CreateCompany::class)
