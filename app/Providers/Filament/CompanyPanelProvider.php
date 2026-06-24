@@ -59,7 +59,9 @@ use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Support\Enums\MaxWidth;
 use Filament\Tables;
+use Filament\View\PanelsRenderHook;
 use Filament\Widgets;
+use Illuminate\Contracts\View\View;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -178,6 +180,14 @@ class CompanyPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/company/theme.css')
             ->brandLogo(static fn () => view('components.icons.logo'))
             ->favicon(asset('favicon.svg'))
+            ->renderHook(
+                PanelsRenderHook::TOPBAR_END,
+                static fn (): View => view('artha.app-launcher'),
+            )
+            ->renderHook(
+                PanelsRenderHook::AUTH_LOGIN_FORM_AFTER,
+                static fn (): View => view('artha.sso-login-button'),
+            )
             ->tenant(Company::class)
             ->tenantProfile(ManageCompany::class)
             ->tenantRegistration(CreateCompany::class)
